@@ -19,7 +19,6 @@
             }
             isDisposed = true;
         }
-
         public void Dispose()
         {
             // виклик допоміжного методу
@@ -28,7 +27,6 @@
             // заборонити збирачу сміття здійснювати фіналізацію
             GC.SuppressFinalize(this);
         }
-
         ~DisposeExample()
         {
             // false вказує на те, що очищення ініціював збирач сміття

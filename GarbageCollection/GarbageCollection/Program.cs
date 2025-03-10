@@ -2,9 +2,21 @@
 {
     internal class Program
     {
+        //public static void ParamsExample(params int[] ints)
+        //{
+        //    foreach (int i in ints)
+        //    {
+        //        Console.WriteLine(i);
+        //    }
+        //}
+
         static void Main(string[] args)
         {
             Console.OutputEncoding = System.Text.Encoding.Unicode;
+
+            //ParamsExample(1, 4, 5, 6, 7, 8);
+
+            //ParamsExample(2, 3, 4, 5);
 
             //Console.WriteLine("Демонстрація System.GC");
             //Console.WriteLine($"Максимальне покоління: {GC.MaxGeneration}");
@@ -26,6 +38,39 @@
             //GC.Collect(); // викликаємо явний збір сміття у всіх поколіннях
             //Console.WriteLine($"Зайнято пам'яті (байт): {GC.GetTotalMemory(false)}");
             //Console.WriteLine($"Покоління об'єкта: {GC.GetGeneration(hlp)}");
+
+            //GC.Collect();
+            //Console.WriteLine($"Покоління об'єкта: {GC.GetGeneration(hlp)}");
+
+            //File file = new File("Test.txt", "C:\\public\\test\\");
+
+            //try
+            //{
+            //    file.OpenFile();
+
+            //    file.AddData("fasdfs");
+
+            //    file.AddData("asdfasdf");
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
+            //finally
+            //{
+            //    file.Dispose();
+            //}
+
+            //using (File file = new File("Test.txt", "C:\\public\\test\\"))
+            //{
+            //    file.OpenFile();
+            //    file.AddData("asdfsdfs");
+            //    file.AddData("fasdfajs;dlfjasldf");
+            //}
+
+
+
+            //file.CloseFile();
 
             // Dispose
             using (DisposeExample test = new DisposeExample())

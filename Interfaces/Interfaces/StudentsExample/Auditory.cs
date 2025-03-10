@@ -40,7 +40,7 @@
             Array.Sort(students, comparer);
         }
 
-        System.Collections.IEnumerator GetEnumerator()
+        public System.Collections.IEnumerator GetEnumerator()
         {
             return students.GetEnumerator();
         }

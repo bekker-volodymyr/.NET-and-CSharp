@@ -25,7 +25,7 @@
         {
             Console.WriteLine("Interface IB");
         }
-        public void Show()
+        void IC.Show()
         {
             Console.WriteLine("Interface IC");
         }
