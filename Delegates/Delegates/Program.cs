@@ -1,4 +1,6 @@
-﻿namespace Delegates
+﻿using Delegates.DoorExample;
+
+namespace Delegates
 {
     public static class StringExtensions
     {
@@ -31,6 +33,13 @@
         static void Main(string[] args)
         {
             Console.OutputEncoding = System.Text.Encoding.Unicode;
+
+            Door doors = new Door();
+            Alarm alarm = new Alarm();
+
+            doors.OnOpenDoor += alarm.OnDoorOpen;
+
+            doors.OpenDoor();
 
             #region Базовий приклад
             //MyDelegate del = Test; // Збереження методу Test в делегаті
@@ -198,11 +207,11 @@
             #endregion
 
             #region Записи
-            Person person1 = new Person("John", 30);
-            Person person2 = person1 with { Age = 31 };  // Створює копію з новим значенням
+            //Person person1 = new Person("John", 30);
+            //Person person2 = person1 with { Age = 31 };  // Створює копію з новим значенням
 
-            Console.WriteLine(person1);  // Person { Name = John, Age = 30 }
-            Console.WriteLine(person2);  // Person { Name = John, Age = 31 }
+            //Console.WriteLine(person1);  // Person { Name = John, Age = 30 }
+            //Console.WriteLine(person2);  // Person { Name = John, Age = 31 }
             #endregion
 
         }
