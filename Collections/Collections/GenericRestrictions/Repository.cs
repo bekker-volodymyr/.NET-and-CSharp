@@ -5,7 +5,7 @@
      * Забезпечує контроль над типами ще на етапі компіляції.
      * Використовується, наприклад, для шаблонних сховищ (репозиторіїв) у патерні "Repository".
      */
-    public class Repository<T> where T : class, new()
+    public class Repository<T> where T : IEnumerable<int>, new()
     {
         private List<T> _items = new List<T>();
 
