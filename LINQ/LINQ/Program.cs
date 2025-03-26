@@ -6,6 +6,13 @@
         public string Name { get; set; }
         public string Description { get; set; }
     }
+
+    public class Product
+    {
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+    }
+
     internal class Program
     {
         static void Main(string[] args)
@@ -134,6 +141,57 @@
                     Console.Write($"\t{item}");
                 }
                 Console.WriteLine();
+            }
+            #endregion
+
+            #region Використання методів LINQ
+            List<Product> products = new List<Product>
+            {
+                new Product { Name = "Apple", Price = 1.2m },
+                new Product { Name = "Banana", Price = 0.8m },
+                new Product { Name = "Orange", Price = 1.5m },
+                new Product { Name = "Grapes", Price = 2.0m },
+                new Product { Name = "Pineapple", Price = 3.0m }
+            };
+
+            // 1. Select() - вибір певних полів
+            var productNames = products.Select(p => p.Name).ToList();
+            Console.WriteLine("Product Names:");
+            productNames.ForEach(name => Console.WriteLine(name));
+
+            // 2. OrderBy() - сортування за ціною
+            var sortedByPrice = products.OrderBy(p => p.Price).ToList();
+            Console.WriteLine("\nSorted by Price:");
+            sortedByPrice.ForEach(p => Console.WriteLine($"{p.Name}: {p.Price}"));
+
+            // 3. GroupBy() - групування за ціною
+            var groupedByPrice = products.GroupBy(p => p.Price).ToList();
+            Console.WriteLine("\nGrouped by Price:");
+            foreach (var group in groupedByPrice)
+            {
+                Console.WriteLine($"Price: {group.Key}");
+                foreach (var product in group)
+                {
+                    Console.WriteLine($"  - {product.Name}");
+                }
+            }
+
+            // 4. Where() - фільтрація товарів, ціна яких більша за 1.5
+            var expensiveProducts = products.Where(p => p.Price > 1.5m).ToList();
+            Console.WriteLine("\nExpensive Products (Price > 1.5):");
+            expensiveProducts.ForEach(p => Console.WriteLine($"{p.Name}: {p.Price}"));
+
+            // 5. ToList() - перетворення в список
+            var productsList = products.ToList();
+            Console.WriteLine("\nProducts List (ToList):");
+            productsList.ForEach(p => Console.WriteLine($"{p.Name}: {p.Price}"));
+
+            // 6. ToArray() - перетворення в масив
+            var productsArray = products.ToArray();
+            Console.WriteLine("\nProducts Array (ToArray):");
+            foreach (var product in productsArray)
+            {
+                Console.WriteLine($"{product.Name}: {product.Price}");
             }
             #endregion
         }
