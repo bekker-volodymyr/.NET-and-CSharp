@@ -1,6 +1,8 @@
-﻿namespace Interfaces.StudentsExample
+﻿using System.Collections;
+
+namespace Interfaces.StudentsExample
 {
-    internal class Auditory : System.Collections.IEnumerable
+    internal class Auditory : IEnumerable
     {
         Student[] students =
         {
@@ -30,19 +32,21 @@
             }
         };
 
+        public IEnumerator GetEnumerator()
+        {
+            return students.GetEnumerator();
+        }
+
         public void Sort()
         {
             Array.Sort(students);
         }
 
-        public void Sort(System.Collections.IComparer comparer)
+        public void Sort(IComparer comparer)
         {
             Array.Sort(students, comparer);
         }
 
-        public System.Collections.IEnumerator GetEnumerator()
-        {
-            return students.GetEnumerator();
-        }
+
     }
 }

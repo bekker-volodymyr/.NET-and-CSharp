@@ -1,4 +1,7 @@
-﻿namespace Interfaces
+﻿using Interfaces.ResearcherExample;
+using Interfaces.StudentsExample;
+
+namespace Interfaces
 {
     public class Program
     {
@@ -6,10 +9,10 @@
         {
             Console.OutputEncoding = System.Text.Encoding.Unicode;
 
-            //IResearcher researcher = new Mathematician();
+            IResearcher researcher = new Mathematician();
 
-            //researcher.Investigate();
-            //researcher.Invent();
+            researcher.Investigate();
+            researcher.Invent();
 
             #region Shop example
             //Director director = new Director
@@ -106,41 +109,47 @@
             #endregion
 
             #region Students example
-            //Auditory auditory = new Auditory();
-            //Console.WriteLine("\n++++++++++++++++++++ список студентів ++++++++++++\n");
-            //foreach (Student student in auditory)
-            //{
-            //    Console.WriteLine(student);
-            //}
+            Auditory auditory = new Auditory();
+            Console.WriteLine("\n---------- Студенти в аудиторії ----------\n");
+            foreach (Student student in auditory)
+            {
+                Console.WriteLine(student);
+            }
 
-            //Console.WriteLine("\n++++++++++++++++++ сортування за прізвищем +++++++++\n");
-            //auditory.Sort();
-            //foreach (Student student in auditory)
-            //{
-            //    Console.WriteLine(student);
-            //}
+            Console.WriteLine("\n---------- Сортування за прізвищем ----------\n");
+            auditory.Sort();
+            foreach (Student student in auditory)
+            {
+                Console.WriteLine(student);
+            }
 
-            //Console.WriteLine("\n++++++++++++++++++++++++++  сортування за датою народження  +++++++++++++++++++\n");
-            //auditory.Sort(new DateComparer());
-            //foreach (Student student in auditory)
-            //{
-            //    Console.WriteLine(student);
-            //}
+            Console.WriteLine("\n----------  Сортування за датою народження  ----------\n");
+            auditory.Sort(new DateComparer());
+            foreach (Student student in auditory)
+            {
+                Console.WriteLine(student);
+            }
 
-            //Console.WriteLine("\n+++++++++++++++++++++ копіювання ++++++++++++\n");
-            //Student student1 = new Student { FirstName = "Greg", LastName = "Carter", BirthDate = new DateTime(1999, 12, 5), StudentCard = new StudentCard { Number = 784523, Series = "ММ" } };
-            //Student student2 = (Student)student1.Clone();
+            Console.WriteLine("\n---------- Копіювання ----------\n");
+            Student student1 = new Student
+            {
+                FirstName = "Greg",
+                LastName = "Carter",
+                BirthDate = new DateTime(1999, 12, 5),
+                StudentCard = new StudentCard { Number = 784523, Series = "ММ" }
+            };
+            Student student2 = (Student)student1.Clone();
 
-            //Console.WriteLine(student1);
-            //Console.WriteLine(student2);
+            Console.WriteLine(student1);
+            Console.WriteLine(student2);
 
-            //Console.WriteLine("\n++++++++++++++++++++++ зміна +++++++++++++\n");
+            Console.WriteLine("\n---------- Зміна ----------\n");
 
-            //student2.StudentCard.Number = 817423;
-            //student2.StudentCard.Series = "КК";
+            student2.StudentCard.Number = 817423;
+            student2.StudentCard.Series = "КК";
 
-            //Console.WriteLine(student1);
-            //Console.WriteLine(student2);
+            Console.WriteLine(student1);
+            Console.WriteLine(student2);
             #endregion
 
             #region Library Example
