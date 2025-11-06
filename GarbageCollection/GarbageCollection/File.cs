@@ -1,6 +1,6 @@
 ﻿namespace GarbageCollection
 {
-    internal class File : IDisposable
+    public class File : IDisposable
     {
         string _fileName;
         string _filePath;
@@ -15,6 +15,7 @@
 
         public void AddData(string data)
         {
+            if (!_isOpened) throw new UnauthorizedAccessException("Файл недоступний!");
             _data += data;
         }
 
@@ -39,6 +40,7 @@
 
         ~File()
         {
+            Console.WriteLine("Виклик фіналізатора");
             Dispose();
         }
     }
