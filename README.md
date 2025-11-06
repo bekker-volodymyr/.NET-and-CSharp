@@ -1,1 +1,8 @@
-<h1>Вітаю, студенте!</h1>
+# Платформа .NET та мова програмування C# | .NET Platform and C# programming language
+
+У цьому репозиторії зібрано приклади, що супроводжують курс занять з дисципліни "Платформа .NET та мова програмування C#".
+
+Презентації та практичні завдання, що доповнюють курс, доступні за [посиланням](https://drive.google.com/drive/folders/1xHNkWrVXKHD-izcu4eMDhyLj2uzXq1Y6?usp=sharing).
+
+# Вміст:
+1. [Garbage Collection](https://github.com/bekker-volodymyr/.NET-and-CSharp/tree/master/GarbageCollection) - приклади використання методів та властивостей класу System.GC, примусовий виклик збірки сміття, реалізація фіналізатора та інтерфейсу IDisposable.
