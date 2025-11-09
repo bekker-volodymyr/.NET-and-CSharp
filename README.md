@@ -5,4 +5,5 @@
 Презентації та практичні завдання, що доповнюють курс, доступні за [посиланням](https://drive.google.com/drive/folders/1xHNkWrVXKHD-izcu4eMDhyLj2uzXq1Y6?usp=sharing).
 
 # Вміст:
-1. [Garbage Collection](https://github.com/bekker-volodymyr/.NET-and-CSharp/tree/master/GarbageCollection) - приклади використання методів та властивостей класу System.GC, примусовий виклик збірки сміття, реалізація фіналізатора та інтерфейсу IDisposable.
+1. [Arrays and Strings](https://github.com/bekker-volodymyr/.NET-and-CSharp/tree/master/Arrays_Strings) - знайомство з масивами (одновимірними та багатовимірними) та рядками в C#.
+2. [Garbage Collection](https://github.com/bekker-volodymyr/.NET-and-CSharp/tree/master/GarbageCollection) - приклади використання методів та властивостей класу System.GC, примусовий виклик збірки сміття, реалізація фіналізатора та інтерфейсу IDisposable.
