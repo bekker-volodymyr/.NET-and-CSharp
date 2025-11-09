@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Arrays_Strings": {
+      "commandName": "Project",
+      "commandLineArgs": "hello\r\nthis\r\nis\r\ncli\r\narguments"
+    }
+  }
+}
