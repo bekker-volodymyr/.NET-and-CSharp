@@ -1,4 +1,5 @@
-﻿using Delegates.DoorExample;
+﻿using Delegates.CalculatorExample;
+using Delegates.DoorExample;
 
 namespace Delegates
 {
@@ -108,27 +109,27 @@ namespace Delegates
             #endregion
 
             #region Приклад multicasting
-            //Calculator calc = new Calculator();
-            //CalcDelegate delAll = calc.Add;
-            //delAll += Calculator.Sub;
-            //delAll += calc.Mult;
-            //delAll += calc.Div;
+            Calculator calc = new Calculator();
+            CalcDelegate delAll = calc.Add;
+            delAll += Calculator.Sub;
+            delAll += calc.Mult;
+            delAll += calc.Div;
 
-            //// Якщо просто викликати методи через делегат, результат збереже значення, що повернув останній метод
-            //Console.WriteLine(delAll(2, 2));
+            // Якщо просто викликати методи через делегат, результат збереже значення, що повернув останній метод
+            Console.WriteLine(delAll(2, 2));
 
-            //// Для отримання всіх результатів необхідно використати метод GetInvocationList та перебрати виклики окремо
-            //foreach (CalcDelegate item in delAll.GetInvocationList()) // масив делегатів
-            //{
-            //    try
-            //    {
-            //        Console.WriteLine($"Результат: {item(5.7, 3.2)}"); // виклик
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        Console.WriteLine(ex.Message);
-            //    }
-            //}
+            // Отримання всіх результатів
+            foreach (CalcDelegate item in delAll.GetInvocationList()) // масив делегатів
+            {
+                try
+                {
+                    Console.WriteLine($"Результат: {item(5.7, 3.2)}"); // виклик
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
             #endregion
 
             #region Generic приклад
