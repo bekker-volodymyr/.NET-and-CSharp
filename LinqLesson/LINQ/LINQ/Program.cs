@@ -63,30 +63,32 @@
             #endregion
 
             #region Використання з власним типом даних
-            // Створюємо джерело даних
-            Person[] people = new Person[]
             {
+                // Створюємо джерело даних
+                Person[] people = new Person[]
+                {
                 new Person { Id = 1, Name = "John Doe", Description = "Software Engineer" },
                 new Person { Id = 2, Name = "Jane Smith", Description = "Graphic Designer" },
                 new Person { Id = 3, Name = "Mike Johnson", Description = "Data Analyst" },
                 new Person { Id = 4, Name = "Emily Davis", Description = "Project Manager" }
-            };
+                };
 
-            // Створюємо запит - обрати тільки тих людей, які є графічними дизайнерами
-            // Результат перетворити на рядок формату Ім'я це Графічний дизайнер
-            var personsQuery =
-                from person in people
-                where person.Description == "Graphic Designer"
-                select $"{person.Name} is {person.Description}";
+                // Створюємо запит - обрати тільки тих людей, які є графічними дизайнерами
+                // Результат перетворити на рядок формату Ім'я це Графічний дизайнер
+                var personsQuery =
+                    from person in people
+                    where person.Description == "Graphic Designer"
+                    select $"{person.Name} is {person.Description}";
 
-            foreach (var item in personsQuery)
-            {
-                Console.WriteLine(item);
+                foreach (var item in personsQuery)
+                {
+                    Console.WriteLine(item);
+                }
+                // Вивод: Jane Smith is Graphic Designer
             }
-            // Вивод: Jane Smith is Graphic Designer
             #endregion
 
-            #region Сортування
+            #region Сортування масиву (зростання)
             int[] arrayInt = { 5, 34, 67, 12, 94, 42 };
             IEnumerable<int> queryAsc = from i in arrayInt
                                         where i % 2 == 0
@@ -99,8 +101,9 @@
                 Console.Write($"{item}\t");
             }
             Console.WriteLine();
+            #endregion
 
-
+            #region Сортування масиву (спадання)
             IEnumerable<int> queryDesc = from i in arrayInt
                                          where i % 2 == 0
                                          orderby i descending
@@ -113,19 +116,69 @@
             Console.WriteLine();
             #endregion
 
-            #region Групування
-            int[] ints = { 5, 34, 67, 12, 94, 42 };
-            // Групуємо результат за останньою цифрою
-            IEnumerable<IGrouping<int, int>> query = from i in arrayInt
-                                                     group i by i % 10;
-
-            Console.WriteLine("Згрупована колекція:");
-            foreach (IGrouping<int, int> key in query)
+            #region Сортування об'єктів за полем
             {
-                Console.Write($"Ключ: {key.Key}\nЗначення:");
-                foreach (int item in key)
+                Person[] people =
                 {
-                    Console.Write($"\t{item}");
+                    new Person { Id = 1, Name = "John Doe", Description = "Software Engineer" },
+                    new Person { Id = 2, Name = "Jane Smith", Description = "Graphic Designer" },
+                    new Person { Id = 3, Name = "Mike Johnson", Description = "Data Analyst" },
+                    new Person { Id = 4, Name = "Emily Davis", Description = "Project Manager" }
+                };
+
+                var sortByName = from p in people
+                                 orderby p.Name
+                                 select p;
+
+                Console.WriteLine("\nSorted by name: ");
+                foreach (Person p in sortByName)
+                {
+                    Console.WriteLine($"\t{p}");
+                }
+            }
+            #endregion
+
+            #region Групування
+            {
+                int[] ints = { 5, 34, 67, 12, 94, 42 };
+                // Групуємо результат за останньою цифрою
+                IEnumerable<IGrouping<int, int>> query = from i in arrayInt
+                                                         group i by i % 10;
+
+                Console.WriteLine("Згрупована колекція:");
+                foreach (IGrouping<int, int> key in query)
+                {
+                    Console.Write($"Ключ: {key.Key}\nЗначення:");
+                    foreach (int item in key)
+                    {
+                        Console.Write($"\t{item}");
+                    }
+                    Console.WriteLine();
+                }
+            }
+            #endregion
+
+            #region Групування об'єктів
+            {
+                Person[] people =
+                {
+                    new Person { Id = 1, Name = "John Doe", Description = "Software Engineer" },
+                    new Person { Id = 2, Name = "Jane Smith", Description = "Graphic Designer" },
+                    new Person { Id = 3, Name = "Mike Johnson", Description = "Data Analyst" },
+                    new Person { Id = 4, Name = "Emily Davis", Description = "Project Manager" }
+                };
+
+                var groupByOccupation = from p in people
+                                        group p by p.Description;
+
+                Console.WriteLine("\nOccupations: ");
+                foreach (var group in groupByOccupation)
+                {
+                    Console.WriteLine($"{group.Key}:");
+                    foreach (var item in group)
+                    {
+                        Console.WriteLine($" - {item}");
+                    }
                 }
                 Console.WriteLine();
             }
