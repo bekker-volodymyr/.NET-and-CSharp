@@ -1,11 +1,14 @@
-﻿namespace Serialization
+﻿using System.Text.Json.Serialization;
+
+namespace Serialization
 {
     [Serializable]
     public class Person
     {
-        public string Name { get; set; }
+        public string? Name { get; set; }
         public int Age { get; set; }
 
+        [JsonInclude]
         int _id;
 
         [NonSerialized]

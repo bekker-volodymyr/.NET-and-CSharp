@@ -1,8 +1,8 @@
 ﻿using Serialization.AttributeExamples;
 using Serialization.AttributeExamples.AttributeCreationExample;
+using Serialization.Services;
 using System.Reflection;
 using System.Text.Json;
-using System.Xml.Serialization;
 
 namespace Serialization
 {
@@ -36,74 +36,37 @@ namespace Serialization
             }
             #endregion
 
-            #region Binary Formatter
-            //Person person = new Person(346875) { Name = "Jack", Age = 34 };
-            //BinaryFormatter binFormat = new BinaryFormatter();
-            //try
-            //{
-            //    using (Stream fStream = File.Create("test.bin"))
-            //    {
-            //        binFormat.Serialize(fStream, person);
-            //    }
-            //    Console.WriteLine("BinarySerialize OK!\n");
-
-            //    Person p = null;
-            //    using (Stream fStream = File.OpenRead("test.bin"))
-            //    {
-            //        p = (Person)binFormat.Deserialize(fStream);
-            //    }
-            //    Console.WriteLine(p);
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine(ex);
-            //}
-            #endregion
-
-            #region Бінарна серіалізація за допомогою JSON
             Person person = new Person(346875) { Name = "Jack", Age = 34 };
+
+            try
+            {
+                SerializationService.BinarySerialization(person);
+                Person p = SerializationService.BinaryDeserialization<Person>();
+            }
+            catch
+            {
+                Console.WriteLine("Binary Serialization is obsolete!");
+            }
 
             // Серіалізація в бінарний формат
             byte[] binaryData = JsonSerializer.SerializeToUtf8Bytes(person);
-
             // Десеріалізація з бінарного формату
-            Person deserializedPerson = JsonSerializer.Deserialize<Person>(binaryData);
+            Person? pJsonBin = JsonSerializer.Deserialize<Person>(binaryData);
+            Console.WriteLine(pJsonBin?.ToString());
 
-            Console.WriteLine(deserializedPerson.ToString());
-            #endregion
-
-            #region XML
-            XmlSerializer xmlFormat = new XmlSerializer(typeof(Person));
-            try
-            {
-                using (Stream fStream = File.Create("test.xml"))
-                {
-                    xmlFormat.Serialize(fStream, person);
-                }
-                Console.WriteLine("XmlSerialize OK!\n");
-
-                Person p = null;
-                using (Stream fStream = File.OpenRead("test.xml"))
-                {
-                    p = (Person)xmlFormat.Deserialize(fStream);
-                }
-                Console.WriteLine(p);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
-            #endregion
-
-            #region JSON
+            // Серіалізація в текстовий формат
             string jsonString = JsonSerializer.Serialize(person);
-
-            Console.WriteLine("JSON:");
+            Console.Write("JSON:");
             Console.WriteLine(jsonString);
 
-            Person dePerson = JsonSerializer.Deserialize<Person>(jsonString);
-            Console.WriteLine(dePerson);
-            #endregion
+            Person? pJsonStr = JsonSerializer.Deserialize<Person>(jsonString);
+            Console.WriteLine(pJsonStr);
+
+            SerializationService.XmlSerialization(person);
+            Person pXml = SerializationService.XmlDeserialization<Person>();
+            Console.WriteLine(pXml);
+
+
         }
     }
 }
