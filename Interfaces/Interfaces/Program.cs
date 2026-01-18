@@ -185,6 +185,9 @@ namespace Interfaces
 
             Array.Sort(arr);
             Array.BinarySearch(arr, 4);
+
+
+            Console.WriteLine("Hello, world!");
         }
     }
 }
